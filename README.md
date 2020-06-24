@@ -23,5 +23,7 @@
 ## 4. 추가 기능개발 및 기타 문의
 - [카카오톡 오픈톡](https://open.kakao.com/o/gOw8l6hc)
 
-## 5. 셋팅방법 예시
+## 5. 셋팅 및 사용 방법 예시
 ![logo-img](https://i.imgur.com/abXDDYd.png)
+
+![logo-img](https://i.imgur.com/4fWQtyu.png)
