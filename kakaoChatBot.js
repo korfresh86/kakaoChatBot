@@ -18,10 +18,10 @@ const hardBoss = ["테스트"];
 const numberString = ["❶", "❷", "❸", "❹", "❺", "❻", "❼", "❽", "❾", "❿", "⓫", "⓬", "⓭", "⓮", "⓯", "⓰", "⓱", "⓲", "⓳", "⓴"];
 
 const path = {
-    Boss: "sdcard/bot/member/boss.json",
-    BossBackup: "sdcard/bot/member/boss_bak.json",
-    Ver: "sdcard/bot/member/version.json",
-    Member: "sdcard/bot/member/member.json",
+    Boss: "sdcard/bot/member_t/boss.json",
+    BossBackup: "sdcard/bot/member_t/boss_bak.json",
+    Ver: "sdcard/bot/member_t/version.json",
+    Member: "sdcard/bot/member_t/member.json",
 }
 
 let teamList = [];
@@ -29,8 +29,10 @@ let version = [];
 let chatList = [];
 let memberList = [];
 
-const roomName = "메M-헤움쓰";
+const roomName = "봇테스트";
 let count = 0;
+
+File.createFolder("sdcard/bot/member_t");
 
 function response(room, msg, sender, isGroupChat, replier, ImageDB, packageName, threadId) {
     if (room == roomName) {
@@ -70,7 +72,9 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB, packageName,
         chatList.push(sender + ": " + msg);
 
         teamList = FileLoad(path.Boss);
+        if(teamList == null) teamList = []
         memberList = FileLoad(path.Member);
+        if(memberList == null) memberList = []
         version = FileLoad(path.Ver);
 
         if (msg == "-봇상태") {
