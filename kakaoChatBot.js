@@ -30,15 +30,15 @@ let chatList = [];
 let memberList = [];
 
 const roomName = "메M-헤움쓰";
-const count = {};
+let count = 0;
 
 function response(room, msg, sender, isGroupChat, replier, ImageDB, packageName, threadId) {
     if (room == roomName) {
 
-        count[room]++;
-        if (count[room] >= 10) {
+        count = count + 1;
+        if (count >= 10) {
             replier.markAsRead();
-            count[room] = 0;
+            count = 0;
         }
 
         let method = msg.split(" ");
