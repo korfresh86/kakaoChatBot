@@ -138,15 +138,7 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB, packageName,
             {
                 const thisTeam = teamList[Number(method[1]) - 1]
                 let number = PENALTY(Number(method[2]), thisTeam);
-                if(!number)
-                {
-                    PRINT_MSG('벌금을 받을 대상이 없습니다.');
-                }
-                else
-                {
-                    PRINT_MSG(thisTeam.Title + "팀의 " + thisTeam.Member[Number(method[2]) - 1] + " 님은 " + thisTeam.Member[number] + " 님에게 벌금 1억메소 주세요.");
-                }
-
+                PRINT_MSG(thisTeam.Title + "팀의 " + thisTeam.Member[Number(method[2]) - 1] + " 님은 " + thisTeam.Member[number] + " 님에게 벌금 1억메소 주세요.");
             }
             else
             {
@@ -427,11 +419,13 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB, packageName,
 
                 "\n\n-벌금 : 해당팀의 벌금자를 랜덤으로 선정 합니다\n" +
                 "-벌금 {팀번호} {벌금자번호}\n" +
-                " 예) -벌금 1 3\n" +
+                " 예) -벌금 1팀 3번\n" +
 
                 "\n\n-복원확인 : 마지막 저장된 팀을 확인 합니다\n" +
                 "\n\n-복원 : 마지막 저장된 팀을 복원 합니다\n" +
                 "\n\n-초기화 : 등록된 모든 팀을 삭제 합니다.\n" +
+                "\n\n-초기화 {팀명} : 선택한 팀을 초기화 합니다.\n" +
+                " 예) -초기화 1팀\n" +
 
                 "-대화내역\n\n" +
                 "-관리자확인\n\n" +
