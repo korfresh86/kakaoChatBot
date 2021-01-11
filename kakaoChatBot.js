@@ -262,7 +262,15 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB, packageName,
         {
             if(Admin.indexOf(sender) > -1)
             {
-                teamList = [];
+                if(method[1] === undefined)
+                {
+                    teamList = [];
+                }
+                else
+                {
+                    teamList[TeamNumber].Member = [];
+                    teamList[TeamNumber].Time = "모출";
+                }
                 FileSave(path.Boss, teamList)
                 PRINT_MSG( HANDLE_LIST_ALL(teamList) );
             }
