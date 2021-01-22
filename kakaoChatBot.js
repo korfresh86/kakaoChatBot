@@ -18,10 +18,10 @@ const hardBoss = ["테스트"];
 const numberString = ["❶", "❷", "❸", "❹", "❺", "❻", "❼", "❽", "❾", "❿", "⓫", "⓬", "⓭", "⓮", "⓯", "⓰", "⓱", "⓲", "⓳", "⓴"];
 
 const path = {
-    Boss: "sdcard/bot/member_t/boss.json",
-    BossBackup: "sdcard/bot/member_t/boss_bak.json",
-    Ver: "sdcard/bot/member_t/version.json",
-    Member: "sdcard/bot/member_t/member.json",
+    Boss: FileStream.getSdcardPath() + "/bot/member/boss.json",
+    BossBackup: FileStream.getSdcardPath() + "/bot/member/boss_bak.json",
+    Ver: FileStream.getSdcardPath() + "/bot/member/version.json",
+    Member: FileStream.getSdcardPath() + "/bot/member/member.json",
 }
 
 let teamList = [];
@@ -31,8 +31,6 @@ let memberList = [];
 
 const roomName = "봇테스트";
 let count = 0;
-
-File.createFolder("sdcard/bot/member_t");
 
 function response(room, msg, sender, isGroupChat, replier, ImageDB, packageName, threadId) {
     if (room == roomName) {
@@ -745,6 +743,13 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB, packageName,
             if(data.indexOf(v) != -1)
             {
                 returnData = "(팬텀)";
+            }
+        });
+
+        ["패파", "패스", "패스파인더", "파인더"].map( (v, k) => {
+            if(data.indexOf(v) != -1)
+            {
+                returnData = "(패파)";
             }
         });
 
