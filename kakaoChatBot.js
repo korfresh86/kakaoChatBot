@@ -145,6 +145,15 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB, packageName,
             }
         }
 
+        if( msg.indexOf("-전체목록") != -1 )
+        {
+            let MSG = "↓전체목록을 확인 하세요↓\n" + blankMsg + "\n";
+            teamList.forEach( (v, k) => {
+                MSG += "\n" + (k + 1) + "팀." + HANDLE_LIST(v)
+            })
+            PRINT_MSG(MSG);
+        }
+
         if( msg.indexOf("-목록") != -1 )
         {
             let webVersion = Utils.getWebText2("https://hmobile-files.s3.ap-northeast-2.amazonaws.com/ver.txt");
@@ -385,6 +394,8 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB, packageName,
             PRINT_MSG(
                 "↓아래를 눌러 확인하세요↓" + blankMsg +
                 "\n" + lineMsg + "\n::사용가능 명령어::\n" + lineMsg +
+
+                "\n\n-전체목록 : 전체 팀 세부 목록이 보입니다.\n" +
                 "\n\n-목록 : 전체 팀 목록이 보입니다.\n" +
                 "-목록 {팀번호} : 특정팀 상세현황이 보입니다.\n" +
                 " 예) /목록 1팀\n" +
@@ -747,6 +758,13 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB, packageName,
         });
 
         ["패파", "패스", "패스파인더", "파인더"].map( (v, k) => {
+            if(data.indexOf(v) != -1)
+            {
+                returnData = "(패파)";
+            }
+        });
+
+        ["패파", "패스", "패스파인더"].map( (v, k) => {
             if(data.indexOf(v) != -1)
             {
                 returnData = "(패파)";
