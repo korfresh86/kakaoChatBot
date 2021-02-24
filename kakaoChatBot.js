@@ -3,7 +3,10 @@
  * 배포: 비상업적 이용으로 무제한 배포 및 소스 수정 가능 합니다.
  */
 
+// 최고 관리자 (수정)
 const SuperAdmin = "헤움꿍/20@/데슬/헤움쓰";
+
+// 관리자 목록 (수정)
 const Admin = [
     "헤움꿍/20@/데슬/헤움쓰",
     "헤움꿍/20@/데슬/헤움쓰"
@@ -17,11 +20,14 @@ const buff = ["비숍", "팔라", "분노", "에반", "와헌", "메디", "몽�
 const hardBoss = ["테스트"];
 const numberString = ["❶", "❷", "❸", "❹", "❺", "❻", "❼", "❽", "❾", "❿", "⓫", "⓬", "⓭", "⓮", "⓯", "⓰", "⓱", "⓲", "⓳", "⓴"];
 
+const Folder = "/bot/member";
+FileStream.createDir(FileStream.getSdcardPath() + Folder);
 const path = {
-    Boss: FileStream.getSdcardPath() + "/bot/member/boss.json",
-    BossBackup: FileStream.getSdcardPath() + "/bot/member/boss_bak.json",
-    Ver: FileStream.getSdcardPath() + "/bot/member/version.json",
-    Member: FileStream.getSdcardPath() + "/bot/member/member.json",
+    Boss: FileStream.getSdcardPath() + Folder + "/boss.json",
+    BossBackup: FileStream.getSdcardPath() + Folder + "/boss_bak.json",
+    Ver: FileStream.getSdcardPath() + Folder + "/version.json",
+    Member: FileStream.getSdcardPath() + Folder + "/member.json",
+    Guild: FileStream.getSdcardPath() + Folder + "/guild.json",
 }
 
 let teamList = [];
@@ -29,6 +35,7 @@ let version = [];
 let chatList = [];
 let memberList = [];
 
+// 카톡대화방 이름 (수정)
 const roomName = "봇테스트";
 let count = 0;
 
