@@ -27,7 +27,7 @@
 ## 5. 셋팅 및 사용 방법 예시
 ![logo-img](https://i.imgur.com/abXDDYd.png)
 
-![logo-img](https://i.imgur.com/4fWQtyu.png)
+![logo-img](https://i.imgur.com/NPc2Mq1.png)
 
 - 해당채팅방의 알림은 항상 "켜기"로 설정 하셔야 합니다.
 - 기본적인 원리가 휴대폰 상단에 보이는 채팅 알림을 인식하여 답변하는 방식 입니다.
