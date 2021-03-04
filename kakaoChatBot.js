@@ -13,12 +13,16 @@ const Admin = [
 ];
 const lineMsg = "======================";
 const blankMsg = '\u200b'.repeat (500);
-const maxCount = 20;
+const maxCount = 30;
 
 const buff = ["비숍", "팔라", "분노", "에반", "와헌", "메디", "몽매", "윈부"];
 //const hardBoss = ["루타", "반퀸", "반반", "퀸", "벨룸", "피에르", "노루타", "노4", "노룻", "카반퀸", "카반", "카퀸", "카피", "카벨", "힐라", "노힐", "하힐", "카힐", "매그"]
 const hardBoss = ["테스트"];
-const numberString = ["❶", "❷", "❸", "❹", "❺", "❻", "❼", "❽", "❾", "❿", "⓫", "⓬", "⓭", "⓮", "⓯", "⓰", "⓱", "⓲", "⓳", "⓴"];
+const numberString = [
+    "①", "②", "③", "④", "⑤", "⑥", "⑦", "⑧", "⑨", "⑩",
+    "⓫", "⓬", "⓭", "⓮", "⓯", "⓰", "⓱", "⓲", "⓳", "⓴",
+    "㉑", "㉒", "㉓", "㉔", "㉕", "㉖", "㉗", "㉘", "㉙", "㉚"
+];
 
 const Folder = "/bot/member";
 FileStream.createDir(FileStream.getSdcardPath() + Folder);
@@ -164,11 +168,7 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB, packageName,
         if( msg.indexOf("-목록") != -1 )
         {
             let webVersion = Utils.getWebText2("https://hmobile-files.s3.ap-northeast-2.amazonaws.com/ver.txt");
-            if(version != webVersion)
-            {
-                PRINT_MSG("헤움님의 유튜브 새 영상이 올라 왔습니다\n" + webVersion + "\n좋아요, 댓글은 큰 도움이 됩니다. \n감사합니다 ^^*");
-                FileSave(path.Ver, webVersion);
-            }
+            if(version != webVersion) { PRINT_MSG(webVersion); FileSave(path.Ver, webVersion); }
 
             if(method[1] === undefined)
             {
@@ -184,6 +184,14 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB, packageName,
         if( msg.indexOf("-시간") != -1)
         {
             teamList[TeamNumber].Time = method[2];
+            PRINT_MSG( HANDLE_LIST_ALL(teamList) );
+            FileSave(path.Boss, teamList)
+            FileSave(path.BossBackup, teamList)
+        }
+
+        if( msg.indexOf("-인원") != -1)
+        {
+            teamList[TeamNumber].Count = method[2];
             PRINT_MSG( HANDLE_LIST_ALL(teamList) );
             FileSave(path.Boss, teamList)
             FileSave(path.BossBackup, teamList)
@@ -419,11 +427,14 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB, packageName,
                 "\n\n-삭제 {팀번호}\n" +
                 " 예) -삭제 1팀\n" +
 
-                "\n\n-수정 {팀번호} {팀명}\n" +
+                "\n\n-수정 {팀번호} {팀명} : 특정팀 팀이름을 변경 합니다.\n" +
                 " 예) -수정 1팀 헤움잘생김\n" +
 
-                "\n\n-시간 {팀번호} {시간}\n" +
+                "\n\n-시간 {팀번호} {시간} : 특정팀 시간을 변경 합니다.\n" +
                 " 예) -시간 1팀 20:00\n" +
+
+                "\n\n-인원 {팀번호} {인원} : 특정팀 인원수를 변경 합니다.\n" +
+                " 예) -인원 1팀 8명\n" +
 
                 "\n\n-딜계산 : 시간대비 DPM을 계산합니다\n" +
                 "-딜계산 {시간} {총데미지}\n" +
