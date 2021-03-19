@@ -272,7 +272,7 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB, packageName,
             }
         }
 
-        if( msg == "-초기화" )
+        if( msg.indexOf("-초기화") != -1 )
         {
             if(Admin.indexOf(sender) > -1)
             {
