@@ -789,6 +789,13 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB, packageName,
             }
         });
 
+        ["듀블", "블레이드", "블레이드", "듀얼", "듀얼블래이드", "듀얼블레이드"].map( (v, k) => {
+            if(data.indexOf(v) != -1)
+            {
+                returnData = "(듀블)";
+            }
+        });
+
         return returnData;
     }
 
