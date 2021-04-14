@@ -374,6 +374,21 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB, packageName,
 
         }
 
+        if( msg.indexOf("-정리") != -1 )
+        {
+            if (Admin.indexOf(sender) == -1)
+            {
+                PRINT_MSG( "팀정리는 운영진만 가능합니다.\n운영진에게 요청 주세요." );
+                return;
+            }
+
+            clear(teamList[TeamNumber]);
+
+            PRINT_MSG( (Number(TeamNumber + 1)) + "팀"  + HANDLE_LIST(teamList[TeamNumber]) );
+            FileSave(path.Boss, teamList)
+            FileSave(path.BossBackup, teamList)
+        }
+
         if( msg.indexOf("-딜계산") != -1 )
         {
             let regEx = /^[\d]{1,2}:[\d]{1,2}/gi
@@ -448,6 +463,10 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB, packageName,
                 "-벌금 {팀번호} {벌금자번호}\n" +
                 " 예) -벌금 1팀 3번\n" +
 
+                "\n\n-정리 : 해당팀의 신청자를 앞쪽으로 모읍니다.\n" +
+                "-정리 {팀번호}\n" +
+                " 예) -정리 1팀\n" +
+
                 "\n\n-복원확인 : 마지막 저장된 팀을 확인 합니다\n" +
                 "\n\n-복원 : 마지막 저장된 팀을 복원 합니다\n" +
                 "\n\n-초기화 : 등록된 모든 팀을 삭제 합니다.\n" +
@@ -511,6 +530,24 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB, packageName,
         }
 
         return MSG;
+    }
+
+    function clear(data)
+    {
+        let clearFilter = false;
+        data.Member.forEach( (v, k) => {
+
+            if(v === undefined || v === "")
+            {
+                clearFilter = true;
+                data.Member.splice(k, 1);
+            }
+
+        } )
+        if(clearFilter)
+        {
+            clear(data);
+        }
     }
 
     function HANDLE_LIST(obj)
