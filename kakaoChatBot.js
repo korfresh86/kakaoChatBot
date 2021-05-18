@@ -833,6 +833,13 @@ function response(room, msg, sender, isGroupChat, replier, ImageDB, packageName,
             }
         });
 
+        ["블래", "블래스터"].map( (v, k) => {
+            if(data.indexOf(v) != -1)
+            {
+                returnData = "(블래)";
+            }
+        });
+
         return returnData;
     }
 
